@@ -6,8 +6,8 @@ createApp({
     return {
       elements : [],
       formData : {},
-      task : false,
-      
+      edit : false,
+      editPostData: null,
     };
   },
   methods: {
@@ -48,7 +48,15 @@ createApp({
 
     },
     
-    
+    editElement(elemento) {
+      this.edit = true,
+      this.editPostData = elemento
+    },
+
+    resetEditForm() {
+      this.edit = false,
+      this.editPostData = null
+    }
 
   },
   mounted() {

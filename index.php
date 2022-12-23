@@ -34,13 +34,25 @@
             <ul class="list-group">
               <li class="list-group-item" v-for="(elemento, i) in elements"> 
                 <div class="d-flex justify-content-between">
-                  {{elemento.newElement}} <button class="btn btn-dark"><i @click="onDeleteTask(elemento.id)" class="fa-solid fa-trash"></i></button>
+                  {{elemento.newElement}} 
+                  <div>
+                    <button class="btn btn-dark"><i @click="onDeleteTask(elemento.id)" class="fa-solid fa-trash"></i></button>
+                    <button class="ms-2 btn btn-warning"><i @click="editElement(elemento)" class="fas fa-pencil"></i></button>
+                  </div>
                 </div>
                 <div>{{elemento.createdAt}} - {{elemento.id}}</div>
-              
               </li>
+
             </ul>
           </div>
+          <form v-if="edit" @submit.prevent="editElement" class="mt-3 text-center" >
+            <input type="text" name="newElement" v-model="editPostData.newElement">
+            <button class="ms-2 btn btn-dark">modifica</button>
+            
+            <button class="ms-2 btn btn-warning" @click="resetEditForm">Annulla</button>
+              
+            
+          </form>
         </div>
       </section>
 

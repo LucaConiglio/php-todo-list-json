@@ -1,13 +1,10 @@
 <?php
-
+//controllo se abbiamo un elemtno id se nò faccio uscire un errore
 if(empty($_POST["elementoid"])) {
 
 http_response_code(400);
 
 exit("id mancante");
-
-
-
 
 }
 
