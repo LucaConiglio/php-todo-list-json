@@ -6,6 +6,8 @@ createApp({
     return {
       elements : [],
       formData : {},
+      task : false,
+      
     };
   },
   methods: {
@@ -16,15 +18,36 @@ createApp({
 
       }).then((resp) => {
         this.fetchlist();
-      });
+      })
+      .catch(error => {
+        console.log(error.message);
+      })
       this.formData.newElement = "";
+      
+
+      
     },
     //prendere l elemento da api/element
     fetchlist() {
+      //faccio la chiamata axios vs api/element.php e ad 
+      //elements dove avevo fatto l' echo assegno il 
+      // valore di resp data, andrò a stampare su index l'elements
         axios.get("api/element.php").then((resp) => {
           this.elements = resp.data;
         });
     },
+
+    onDeleteTask (elementoid) {
+      axios.post("api/deleteElement.php", {elementoid}, {
+        headers:{"Content-Type": "multipart/form-data"},
+      }
+      )
+      .then((resp) => {
+        this.fetchlist();
+      });
+
+    },
+    
     
 
   },

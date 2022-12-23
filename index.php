@@ -28,11 +28,17 @@
           <h1 class="text-center py-5 mt-5 text-warning">TODO-LIST-PHP</h1>
           <form @submit.prevent="onFormSubmit" class="text-center" >
             <input type="text" name="newElement" v-model="formData.newElement">
-            <button class="btn btn-dark">Aggiungi</button>
+            <button class="ms-2 btn btn-dark">Aggiungi</button>
           </form>
           <div class="d-flex justify-content-center">
-            <ul class="list-style-none">
-              <li v-for="elemento in elements">{{elemento.newElement}}</li>
+            <ul class="list-group">
+              <li class="list-group-item" v-for="(elemento, i) in elements"> 
+                <div class="d-flex justify-content-between">
+                  {{elemento.newElement}} <button class="btn btn-dark"><i @click="onDeleteTask(elemento.id)" class="fa-solid fa-trash"></i></button>
+                </div>
+                <div>{{elemento.createdAt}} - {{elemento.id}}</div>
+              
+              </li>
             </ul>
           </div>
         </div>
