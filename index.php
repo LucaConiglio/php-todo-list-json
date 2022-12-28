@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 
 		<!-- Bootstrap e mio css -->
     
@@ -45,16 +46,18 @@
 
             </ul>
           </div>
-          <form v-if="edit" @submit.prevent="editElement" class="mt-3 text-center" >
+          <form v-if="edit" @submit.prevent="onFormEdit" class="mt-3 text-center" >
             <input type="text" name="newElement" v-model="editPostData.newElement">
-            <button class="ms-2 btn btn-dark">modifica</button>
+            <button class="ms-2 btn btn-dark">Salva</button>
             
             <button class="ms-2 btn btn-warning" @click="resetEditForm">Annulla</button>
               
             
           </form>
         </div>
+        <div class="slider-thumb"></div>
       </section>
+      
 
 
 

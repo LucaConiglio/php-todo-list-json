@@ -50,9 +50,25 @@ createApp({
     
     editElement(elemento) {
       this.edit = true,
-      this.editPostData = elemento
+      //usiamo lo spread per evitare che venga modificato in tempo reale 
+      this.editPostData = {...elemento}
+      
+
     },
 
+    onFormEdit() {
+      axios.post("api/EditElement.php", this.editPostData, {
+        headers: { "Content-Type": "multipart/form-data" }
+
+      }).then((resp) => {
+        this.fetchlist();
+      })
+      this.resetEditForm()
+      .catch(error => {
+        console.log(error.message);
+      })
+    }
+,
     resetEditForm() {
       this.edit = false,
       this.editPostData = null
