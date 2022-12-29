@@ -21,15 +21,16 @@ $elements = file_get_contents("../tasks.json");
   //per ogni elemento della lista controllo se il suo id corrisponde a quello richiesto
   //se lo trova salva su variabile $indice
   foreach($elements as $i => $post) {
-    if($post["id"] === $_POST["elementoid"]) {
+    if($post["id"] === $_POST["id"]) {
 
       $indice = $i;
     }
     
   };
 
+  
   $elements[$indice]["newElement"] = $_POST["newElement"];
-  $elements[$indice]["updateat"] =  date('Y-m-d H:i:s');
+  $elements[$indice]["createdAt"] =  date('Y-m-d H:i:s');
 
   $tasksjson = json_encode($elements, JSON_PRETTY_PRINT);
 

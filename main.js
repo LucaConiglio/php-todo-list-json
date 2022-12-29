@@ -24,8 +24,6 @@ createApp({
       })
       this.formData.newElement = "";
       
-
-      
     },
     //prendere l elemento da api/element
     fetchlist() {
@@ -52,12 +50,11 @@ createApp({
       this.edit = true,
       //usiamo lo spread per evitare che venga modificato in tempo reale 
       this.editPostData = {...elemento}
-      
 
     },
 
     onFormEdit() {
-      axios.post("api/EditElement.php", this.editPostData, {
+      axios.post("api/editElement.php", this.editPostData, {
         headers: { "Content-Type": "multipart/form-data" }
 
       }).then((resp) => {
@@ -66,7 +63,7 @@ createApp({
       this.resetEditForm()
       .catch(error => {
         console.log(error.message);
-      })
+      });
     }
 ,
     resetEditForm() {
